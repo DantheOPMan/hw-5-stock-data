@@ -1,0 +1,110 @@
+/* Child1.css */
+
+.child1 {
+    padding: 20px;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .controls {
+    display: flex;
+    flex-direction: column; /* Stack vertically */
+    align-items: center; /* Center horizontally */
+    margin-bottom: 20px;
+    width: 100%; /* Ensure full width for centering */
+  }
+  
+  .company-selector {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .company-selector-span {
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  .company-label {
+    margin-right: 15px;
+    display: flex;
+    align-items: center;
+  }
+  
+  .company-label input {
+    margin-right: 5px;
+  }
+  
+  .month-selector {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  
+  .month-selector-label {
+    display: flex;
+    align-items: center;
+  }
+  
+  .month-selector-select {
+    margin-left: 10px;
+    padding: 5px;
+    font-size: 14px;
+  }
+  
+  .chart-container {
+    width: 100%;
+    max-width: 800px; /* Limit maximum width for better appearance */
+    height: 500px;
+  }
+  
+  .tooltip {
+    pointer-events: none;
+    font-size: 12px;
+  }
+  
+  .tooltip-rect {
+    fill: white;
+    stroke: black;
+    rx: 5;
+    ry: 5;
+  }
+  
+  .tooltip-date,
+  .tooltip-open,
+  .tooltip-close,
+  .tooltip-diff {
+    fill: black;
+    font-size: 12px;
+  }
+  
+  .no-data-message {
+    font-size: 16px;
+  }
+  
+  .axis-text {
+    font-size: 12px;
+  }
+  
+  .data-circle {
+    cursor: pointer;
+  }
+  
+  .legend {
+    font-size: 12px;
+  }
+  
+  .legend-rect {
+    stroke: black;
+    stroke-width: 1px;
+  }
+  
+  .legend-text {
+    font-size: 12px;
+  }
+  
