@@ -1,3 +1,5 @@
+/* src/components/Child1.css */
+
 /* Main Container */
 .child1 {
     padding: 20px;
@@ -14,9 +16,12 @@
 .controls {
     display: flex;
     flex-direction: column;
+    /* Stack vertically */
     align-items: center;
+    /* Center horizontally */
     margin-bottom: 20px;
     width: 100%;
+    /* Ensure full width for centering */
 }
 
 /* Company Selector */
@@ -62,9 +67,10 @@
 /* Chart Container */
 .chart-container {
     width: 100%;
-    max-width: 800px;
-    /* Limit maximum width for better appearance */
+    max-width: 900px;
+    /* Updated to match new SVG width */
     height: 500px;
+    position: relative;
 }
 
 /* Tooltip Styling */
@@ -88,6 +94,10 @@
     font-size: 12px;
 }
 
+.tooltip-diff {
+    font-weight: bold;
+}
+
 /* No Data Message */
 .no-data-message {
     font-size: 16px;
@@ -104,6 +114,13 @@
     cursor: pointer;
 }
 
+.open-circle:hover,
+.close-circle:hover {
+    r: 6;
+    stroke: black;
+    stroke-width: 1px;
+}
+
 /* Legend Styling */
 .legend {
     font-size: 12px;
@@ -116,4 +133,5 @@
 
 .legend-text {
     font-size: 12px;
+    alignment-baseline: middle;
 }
