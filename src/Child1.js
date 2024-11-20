@@ -1,3 +1,4 @@
+// Child1.js
 import React, { Component } from "react";
 import * as d3 from "d3";
 import "./Child1.css";
@@ -61,7 +62,7 @@ class Child1 extends Component {
       .append("svg")
       .attr("width", "100%")
       .attr("height", 500)
-      .attr("viewBox", `0 0 ${800} ${500}`)
+      .attr("viewBox", `0 0 900 500`) // Increased width to 900
       .attr("preserveAspectRatio", "xMidYMid meet");
 
     // Append group for chart elements
@@ -83,8 +84,8 @@ class Child1 extends Component {
     const data = this.getFilteredData();
 
     const svg = d3.select(this.chartRef.current).select("svg");
-    const margin = { top: 50, right: 100, bottom: 50, left: 60 };
-    const width = 800 - margin.left - margin.right;
+    const margin = { top: 50, right: 200, bottom: 50, left: 60 }; // Increased right margin to 200
+    const width = 900 - margin.left - margin.right; // Adjusted width based on new SVG width
     const height = 500 - margin.top - margin.bottom;
 
     // Clear previous tooltips and legends

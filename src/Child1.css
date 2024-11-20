@@ -1,3 +1,4 @@
+/* Main Container */
 .child1 {
     padding: 20px;
     background-color: #ffffff;
@@ -7,102 +8,112 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-  }
-  
-  .controls {
+}
+
+/* Controls Container */
+.controls {
     display: flex;
-    flex-direction: column; /* Stack vertically */
-    align-items: center; /* Center horizontally */
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 20px;
-    width: 100%; /* Ensure full width for centering */
-  }
-  
-  .company-selector {
+    width: 100%;
+}
+
+/* Company Selector */
+.company-selector {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-  }
-  
-  .company-selector-span {
+}
+
+.company-selector-span {
     margin-right: 10px;
     font-weight: bold;
-  }
-  
-  .company-label {
+}
+
+.company-label {
     margin-right: 15px;
     display: flex;
     align-items: center;
-  }
-  
-  .company-label input {
+}
+
+.company-label input {
     margin-right: 5px;
-  }
-  
-  .month-selector {
+}
+
+/* Month Selector */
+.month-selector {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
-  }
-  
-  .month-selector-label {
+}
+
+.month-selector-label {
     display: flex;
     align-items: center;
-  }
-  
-  .month-selector-select {
+}
+
+.month-selector-select {
     margin-left: 10px;
     padding: 5px;
     font-size: 14px;
-  }
-  
-  .chart-container {
+}
+
+/* Chart Container */
+.chart-container {
     width: 100%;
-    max-width: 800px; /* Limit maximum width for better appearance */
+    max-width: 800px;
+    /* Limit maximum width for better appearance */
     height: 500px;
-  }
-  
-  .tooltip {
+}
+
+/* Tooltip Styling */
+.tooltip {
     pointer-events: none;
     font-size: 12px;
-  }
-  
-  .tooltip-rect {
+}
+
+.tooltip-rect {
     fill: white;
     stroke: black;
     rx: 5;
     ry: 5;
-  }
-  
-  .tooltip-date,
-  .tooltip-open,
-  .tooltip-close,
-  .tooltip-diff {
+}
+
+.tooltip-date,
+.tooltip-open,
+.tooltip-close,
+.tooltip-diff {
     fill: black;
     font-size: 12px;
-  }
-  
-  .no-data-message {
+}
+
+/* No Data Message */
+.no-data-message {
     font-size: 16px;
-  }
-  
-  .axis-text {
+    fill: black;
+}
+
+/* Axis Text */
+.axis-text {
     font-size: 12px;
-  }
-  
-  .data-circle {
+}
+
+/* Data Circles */
+.data-circle {
     cursor: pointer;
-  }
-  
-  .legend {
+}
+
+/* Legend Styling */
+.legend {
     font-size: 12px;
-  }
-  
-  .legend-rect {
+}
+
+.legend-rect {
     stroke: black;
     stroke-width: 1px;
-  }
-  
-  .legend-text {
+}
+
+.legend-text {
     font-size: 12px;
-  }
-  
+}
