@@ -1,4 +1,3 @@
-// Child1.js
 import React, { Component } from "react";
 import * as d3 from "d3";
 import "./Child1.css";
@@ -7,8 +6,8 @@ class Child1 extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            company: "Apple", // Default Company
-            selectedMonth: "November", // Default Month
+            company: "Apple",
+            selectedMonth: "November",
         };
         this.chartRef = React.createRef();
     }
@@ -18,7 +17,6 @@ class Child1 extends Component {
     }
 
     componentDidUpdate(prevProps, prevState) {
-        // Only update the chart if data, company, or month has changed
         if (
             prevProps.csv_data !== this.props.csv_data ||
             prevState.company !== this.state.company ||
@@ -28,22 +26,18 @@ class Child1 extends Component {
         }
     }
 
-    // Handle company selection
     handleCompanyChange = (event) => {
         this.setState({ company: event.target.value });
     };
 
-    // Handle month selection
     handleMonthChange = (event) => {
         this.setState({ selectedMonth: event.target.value });
     };
 
-    // Filter data based on selected company and month
     getFilteredData = () => {
         const { csv_data } = this.props;
         const { company, selectedMonth } = this.state;
 
-        // Convert month name to month number (0-11)
         const monthNumber = new Date(`${selectedMonth} 1, 2020`).getMonth();
 
         return csv_data
@@ -55,17 +49,15 @@ class Child1 extends Component {
             .sort((a, b) => a.Date - b.Date);
     };
 
-    // Initialize the chart
     createChart = () => {
         const svg = d3
             .select(this.chartRef.current)
             .append("svg")
             .attr("width", "100%")
             .attr("height", 500)
-            .attr("viewBox", `0 0 900 500`) // Increased width to 900
+            .attr("viewBox", `0 0 900 500`)
             .attr("preserveAspectRatio", "xMidYMid meet");
 
-        // Append group for chart elements
         svg.append("g").attr("class", "x-axis");
         svg.append("g").attr("class", "y-axis");
         svg.append("path").attr("class", "line open");
@@ -73,7 +65,6 @@ class Child1 extends Component {
         svg.append("g").attr("class", "circles open");
         svg.append("g").attr("class", "circles close");
 
-        // Tooltip setup
         const tooltip = svg.append("g").attr("class", "tooltip").style("opacity", 0);
         tooltip.append("rect")
             .attr("width", 180)
@@ -100,35 +91,29 @@ class Child1 extends Component {
             .attr("y", 80)
             .attr("class", "tooltip-diff");
 
-        // No Data Message
         svg.append("text")
-            .attr("x", 450) // Center horizontally
-            .attr("y", 250) // Center vertically
+            .attr("x", 450)
+            .attr("y", 250)
             .attr("text-anchor", "middle")
             .attr("class", "no-data-message")
-            .style("display", "none") // Hidden by default
+            .style("display", "none")
             .text("No data available for the selected company and month.");
 
-        // Append legend group
         svg.append("g").attr("class", "legend");
 
-        // Initial update
         this.updateChart();
     };
 
-    // Update the chart based on current state and props
     updateChart = () => {
         const data = this.getFilteredData();
 
         const svg = d3.select(this.chartRef.current).select("svg");
-        const margin = { top: 50, right: 200, bottom: 50, left: 60 }; // Increased right margin to 200
-        const width = 900 - margin.left - margin.right; // Adjusted width based on new SVG width
+        const margin = { top: 50, right: 200, bottom: 50, left: 60 };
+        const width = 900 - margin.left - margin.right;
         const height = 500 - margin.top - margin.bottom;
 
-        // Toggle No Data message visibility
         if (data.length === 0) {
             svg.select(".no-data-message").style("display", "block");
-            // Hide chart elements
             svg.select(".x-axis").style("display", "none");
             svg.select(".y-axis").style("display", "none");
             svg.select(".line.open").style("display", "none");
@@ -140,7 +125,6 @@ class Child1 extends Component {
             return;
         } else {
             svg.select(".no-data-message").style("display", "none");
-            // Show chart elements
             svg.select(".x-axis").style("display", "block");
             svg.select(".y-axis").style("display", "block");
             svg.select(".line.open").style("display", "block");
@@ -151,7 +135,6 @@ class Child1 extends Component {
             svg.select(".tooltip").style("display", "block");
         }
 
-        // Define scales
         const xScale = d3
             .scaleTime()
             .domain(d3.extent(data, (d) => d.Date))
@@ -165,14 +148,12 @@ class Child1 extends Component {
             .domain([yMin - 10, yMax + 10])
             .range([height + margin.top, margin.top]);
 
-        // Define axes
         const xAxis = d3
             .axisBottom(xScale)
             .ticks(d3.timeDay.every(2))
             .tickFormat(d3.timeFormat("%d-%b"));
         const yAxis = d3.axisLeft(yScale);
 
-        // Render axes
         svg.select(".x-axis")
             .attr("transform", `translate(0, ${height + margin.top})`)
             .call(xAxis)
@@ -185,7 +166,6 @@ class Child1 extends Component {
             .selectAll("text")
             .attr("class", "axis-text");
 
-        // Define lines
         const lineOpen = d3
             .line()
             .x((d) => xScale(d.Date))
@@ -198,7 +178,6 @@ class Child1 extends Component {
             .y((d) => yScale(d.Close))
             .curve(d3.curveMonotoneX);
 
-        // Render lines
         svg.select(".line.open")
             .datum(data)
             .attr("fill", "none")
@@ -213,11 +192,9 @@ class Child1 extends Component {
             .attr("stroke-width", 2)
             .attr("d", lineClose);
 
-        // Tooltip setup
         const tooltip = svg.select(".tooltip");
-        tooltip.style("opacity", 0); // Ensure tooltip is hidden initially
+        tooltip.style("opacity", 0);
 
-        // Functions to handle tooltip interactions
         const mouseover = () => {
             tooltip.style("opacity", 1);
         };
@@ -235,7 +212,6 @@ class Child1 extends Component {
             tooltip.style("opacity", 0);
         };
 
-        // Render circles for Open prices
         svg.select(".circles.open")
             .selectAll("circle")
             .data(data)
@@ -249,7 +225,6 @@ class Child1 extends Component {
             .on("mousemove", (event, d) => mousemove(event, d, "Open"))
             .on("mouseout", mouseout);
 
-        // Render circles for Close prices
         svg.select(".circles.close")
             .selectAll("circle")
             .data(data)
@@ -263,9 +238,8 @@ class Child1 extends Component {
             .on("mousemove", (event, d) => mousemove(event, d, "Close"))
             .on("mouseout", mouseout);
 
-        // Add legend inside the chart area (top-right corner)
         const legend = svg.select(".legend");
-        legend.selectAll("*").remove(); // Clear previous legend
+        legend.selectAll("*").remove();
 
         legend
             .attr("transform", `translate(${width + margin.left - 150}, ${margin.top})`);
@@ -283,12 +257,10 @@ class Child1 extends Component {
             .attr("transform", (d, i) => `translate(0, ${i * 25})`)
             .style("cursor", "pointer")
             .on("mouseover", function(event, d) {
-                // Highlight the corresponding line
                 svg.select(`.line.${d.name.toLowerCase()}`)
                     .attr("stroke-width", 4);
             })
             .on("mouseout", function(event, d) {
-                // Reset the line stroke width
                 svg.select(`.line.${d.name.toLowerCase()}`)
                     .attr("stroke-width", 2);
             });
