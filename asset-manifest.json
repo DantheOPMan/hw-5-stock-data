@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/hw-5-stock-data/static/css/main.a44a15ed.css",
+    "main.js": "/hw-5-stock-data/static/js/main.3874dba2.js",
+    "static/js/453.193ce53b.chunk.js": "/hw-5-stock-data/static/js/453.193ce53b.chunk.js",
+    "index.html": "/hw-5-stock-data/index.html",
+    "main.a44a15ed.css.map": "/hw-5-stock-data/static/css/main.a44a15ed.css.map",
+    "main.3874dba2.js.map": "/hw-5-stock-data/static/js/main.3874dba2.js.map",
+    "453.193ce53b.chunk.js.map": "/hw-5-stock-data/static/js/453.193ce53b.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.a44a15ed.css",
+    "static/js/main.3874dba2.js"
+  ]
+}
