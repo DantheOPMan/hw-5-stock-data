@@ -1,4 +1,3 @@
-// Child1.js
 import React, { Component } from "react";
 import * as d3 from "d3";
 import "./Child1.css";
